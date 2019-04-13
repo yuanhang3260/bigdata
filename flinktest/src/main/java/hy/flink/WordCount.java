@@ -17,7 +17,7 @@ public class WordCount {
                 .socketTextStream("localhost", 9999)
                 .flatMap(new Splitter())
                 .keyBy(0)
-                .timeWindow(Time.seconds(5))
+                .timeWindow(Time.seconds(10))
                 .sum(1);
 
         dataStream.print();
