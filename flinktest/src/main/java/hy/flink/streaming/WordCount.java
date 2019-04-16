@@ -11,14 +11,14 @@ public class WordCount {
 
     public static void main(String[] args) throws Exception {
 
-        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+      StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
 
         DataStream<Tuple2<String, Integer>> dataStream = env
-                .socketTextStream("localhost", 9999)
-                .flatMap(new Splitter())
-                .keyBy(0)
-                .timeWindow(Time.seconds(10))
-                .sum(1);
+            .socketTextStream("localhost", 9999)
+            .flatMap(new Splitter())
+            .keyBy(0)
+            .timeWindow(Time.seconds(10))
+            .sum(1);
 
         dataStream.print();
 
@@ -26,15 +26,15 @@ public class WordCount {
     }
 
     public static class Splitter implements FlatMapFunction<String, Tuple2<String, Integer>> {
-        @Override
-        public void flatMap(String sentence, Collector<Tuple2<String, Integer>> out) throws Exception {
-            for (String word: sentence.split(" ")) {
-                if (word.isEmpty()) {
-                    continue;
-                }
-                out.collect(new Tuple2<String, Integer>(word, 1));
-            }
+      @Override
+      public void flatMap(String sentence, Collector<Tuple2<String, Integer>> out) throws Exception {
+        for (String word: sentence.split(" ")) {
+          if (word.isEmpty()) {
+            continue;
+          }
+          out.collect(new Tuple2<String, Integer>(word, 1));
         }
+      }
     }
 
 }
