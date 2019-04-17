@@ -10,7 +10,7 @@ import org.apache.flink.util.Collector;
 public class WordCount {
 
   public static void main(String[] args) throws Exception {
-    final ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
+    ExecutionEnvironment env = ExecutionEnvironment.getExecutionEnvironment();
 
 //    DataSet<String> text = env.fromElements(
 //        "Who's there?",
@@ -19,6 +19,7 @@ public class WordCount {
     DataSource<String> input = env.readTextFile(args[0]);
     DataSet<Tuple2<String, Integer>> wordCounts = input
         .flatMap(new LineSplitter())
+        .filter(x -> !x.f0.isEmpty())
         .groupBy(0)
         .sum(1);
 
