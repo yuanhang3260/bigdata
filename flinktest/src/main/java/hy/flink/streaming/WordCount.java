@@ -1,5 +1,6 @@
 package hy.flink.streaming;
 
+import org.apache.flink.api.common.JobExecutionResult;
 import org.apache.flink.api.common.functions.FlatMapFunction;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStream;
@@ -19,9 +20,11 @@ public class WordCount {
           .timeWindow(Time.seconds(10))
           .sum(1);
 
-      dataStream.print();
+    dataStream.print();
 
-      env.execute("Window WordCount");
+    JobExecutionResult result = env.execute("Window WordCount");
+    System.out.println(result.getAllAccumulatorResults());
+    System.out.println(result.getJobID());
   }
 
   public static class Splitter implements FlatMapFunction<String, Tuple2<String, Integer>> {

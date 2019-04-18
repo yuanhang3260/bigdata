@@ -30,6 +30,7 @@ ext {
     scalaBinaryVersion = '2.11'
     slf4jVersion = '1.7.7'
     log4jVersion = '1.2.17'
+    lombokVersion = '1.18.6'
 }
 
 
@@ -82,6 +83,8 @@ dependencies {
 
     compile "log4j:log4j:${log4jVersion}"
     compile "org.slf4j:slf4j-log4j12:${slf4jVersion}"
+
+    compile "org.projectlombok:lombok:$lombokVersion"
 
     // Add test dependencies here.
     // testCompile "junit:junit:4.12"
