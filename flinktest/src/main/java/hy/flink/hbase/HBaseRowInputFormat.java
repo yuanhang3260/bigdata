@@ -156,7 +156,7 @@ public class HBaseRowInputFormat extends AbstractTableInputFormat<Row> {
 //    System.arraycopy(famNames, 0, fieldNames, 1, famNames.length);
 //
 //    TypeInformation<?>[] typeInfos = new TypeInformation[famNames.length + 1];
-//    typeInfos[0] = Types.STRING;
+//    typeInfos[0] = Types.STRING();
 //    int i = 1;
 //    for (String family : famNames) {
 //      typeInfos[i] = new RowTypeInfo(schema.getQualifierTypes(family), schema.getQualifierNames(family));
