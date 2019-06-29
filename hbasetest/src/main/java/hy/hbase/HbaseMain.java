@@ -25,7 +25,7 @@ public class HbaseMain {
 
     Put put = new Put(Bytes.toBytes("rk001"));
     put.addColumn(Bytes.toBytes("cf_info"), Bytes.toBytes("name"), Bytes.toBytes("snoopy"));
-    put.addColumn(Bytes.toBytes("cf_info"), Bytes.toBytes("age"), Bytes.toBytes("3"));
+    put.addColumn(Bytes.toBytes("cf_info"), Bytes.toBytes("age"), Bytes.toBytes(3));
     put.addColumn(Bytes.toBytes("cf_info"), Bytes.toBytes("sex"), Bytes.toBytes("boy"));
 
     table.put(put);

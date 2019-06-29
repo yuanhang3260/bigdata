@@ -32,6 +32,7 @@ ext {
     slf4jVersion = '1.7.7'
     log4jVersion = '1.2.17'
     lombokVersion = '1.18.6'
+    hbaseVersion = '2.2.0'
 }
 
 
@@ -82,6 +83,9 @@ dependencies {
 
     compile "org.apache.flink:flink-table-planner_${scalaBinaryVersion}:${flinkVersion}"
     compile "org.apache.flink:flink-table-api-java-bridge_${scalaBinaryVersion}:${flinkVersion}"
+
+    compile "org.apache.hbase:hbase:${hbaseVersion}"
+    compile "org.apache.hbase:hbase-client:${hbaseVersion}"
 
     // --------------------------------------------------------------
     // Dependencies that should be part of the shadow jar, e.g.
